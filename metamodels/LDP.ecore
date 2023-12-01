@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="LDP" nsURI="platform:/resource/tp1/metamodels/LDP.ecore" nsPrefix="LDP">
+  <eClassifiers xsi:type="ecore:EClass" name="Processus">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="suivante" lowerBound="1"
+        upperBound="-1" eType="#//Activite" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debut" lowerBound="1" eType="#//Debut"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fin" lowerBound="1" eType="#//Fin"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activiteCourante" eType="#//Activite"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Activite">
+    <eOperations name="pasDansSuivant" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        eExceptions="#//Activite">
+      <eParameters name="act" eType="#//Activite"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nom" lowerBound="1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="suivante" eType="#//Activite"
+        eOpposite="#//Activite/precedente"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="precedente" eType="#//Activite"
+        containment="true" eOpposite="#//Activite/suivante"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PseudoEtat">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" lowerBound="1"
+        eType="#//Activite"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Debut"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Fin"/>
+</ecore:EPackage>
